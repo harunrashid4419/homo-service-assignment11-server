@@ -121,19 +121,12 @@ async function run(){
             res.send(result);
         });
 
+        // jwt token
         app.post('/jwt', (req, res) =>{
             const user = req.body;
             const token = jwt.sign(user, process.env.SECRET_TOKEN, {expiresIn: '1h'});
             res.send({token});
-        })
-
-        // app.get('/review/:id', async(req, res) =>{
-        //     const id = req.params.id;
-        //     const query = {_id: ObjectId(id)};
-        //     const cursor = reviewCollection.find(query);
-        //     const result = await cursor.toArray();
-        //     res.send(result);
-        // })
+        });
 
     }
     finally{
